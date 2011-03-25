@@ -12,6 +12,7 @@ then
 fi
 cd ..
 cp bad-php.php testrepo/
+cd testrepo
 git add .
 git commit -m "Add bad php file"
 if [ $? -eq 0 ]
@@ -19,3 +20,5 @@ then
 	echo "Error in precommit bad php file!"
 	exit -1;
 fi
+cd ..
+exit 0
