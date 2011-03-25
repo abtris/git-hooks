@@ -8,7 +8,7 @@ $against = $return == 0 ? 'HEAD' : '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
 
 exec("git diff-index --cached --name-only {$against}", $output);
 
-$filename_pattern = '/\.(xml|xsl(t)?)$/';
+$filename_pattern = '/\.(xml|xsl[t]?)$/';
 
 $exit_status = 0;
 
@@ -19,7 +19,7 @@ foreach ($output as $file) {
     }
 
     $lint_output = array();
-    exec("xmllint " . escapeshellarg($file), $lint_output, $return);
+    exec("xmllint  --noout " . escapeshellarg($file), $lint_output, $return);
     if ($return == 0) {
         continue;
     }
